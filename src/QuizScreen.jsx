@@ -56,8 +56,9 @@ export default function QuizScreen() {
 
   return (
     <div className="quiz-screen">
-      <img src="/src/assets/yellow-blob-main.png" alt="" className="blob-img blob-yellow" />
-      <img src="/src/assets/blue-blob-main.png" alt="" className="blob-img blob-blue" />
+      <img src="/yellow-blob-main.png" alt="" className="blob-img blob-yellow" />
+      <img src="/blue-blob-main.png" alt="" className="blob-img blob-blue" />
+
       <div className="quiz-container">
         {questions.map(q => (
           <div key={q.id} className="question-block">
