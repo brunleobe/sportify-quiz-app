@@ -5,6 +5,7 @@ body {
   color: #293264;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 .start-screen,
@@ -68,21 +69,21 @@ button:disabled,
 
 .blob-img {
   position: fixed;
-  z-index: 0;
-  width: 150px;
+  z-index: -1;
+  width: 250px;
   height: auto;
   pointer-events: none;
-  opacity: 0.85;
+  opacity: 0.9;
 }
 
 .blob-yellow {
-  top: 0;
-  right: 0;
+  top: -50px;
+  right: -50px;
 }
 
 .blob-blue {
-  bottom: 0;
-  left: 0;
+  bottom: -50px;
+  left: -50px;
 }
 
 .quiz-container {
@@ -209,6 +210,6 @@ button:disabled,
   }
 
   .blob-img {
-    width: 100px;
+    width: 180px;
   }
 }
