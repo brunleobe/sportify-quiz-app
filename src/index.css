@@ -23,6 +23,12 @@ body {
   z-index: 1;
 }
 
+.loading-text {
+  font-size: 1.8rem;
+  color: #4d5b9e;
+  font-style: bold;
+}
+
 button,
 .startQuizBtn,
 .checkAnswersBtn,
