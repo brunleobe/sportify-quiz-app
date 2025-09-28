@@ -1,4 +1,3 @@
-/* Base Styles */
 body {
   margin: 0;
   font-family: 'Inter', Arial, sans-serif;
@@ -8,7 +7,6 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Make content center on all screens */
 .start-screen,
 .quiz-screen {
   position: relative;
@@ -24,7 +22,6 @@ body {
   z-index: 1;
 }
 
-/* Buttons (consistent look, accessible contrast) */
 button,
 .startQuizBtn,
 .checkAnswersBtn,
@@ -53,7 +50,7 @@ button.primary:hover {
 
 button:focus,
 .answer:focus {
-  outline: 3px solid #ffbf47; /* high-contrast focus ring */
+  outline: 3px solid #ffbf47;
   outline-offset: 3px;
 }
 
@@ -69,7 +66,6 @@ button:disabled,
   opacity: 1;
 }
 
-/* Decorative blobs */
 .blob-img {
   position: fixed;
   z-index: 0;
@@ -89,7 +85,6 @@ button:disabled,
   left: 0;
 }
 
-/* Quiz container */
 .quiz-container {
   width: 100%;
   max-width: 700px;
@@ -114,7 +109,6 @@ button:disabled,
   color: #293264;
 }
 
-/* Answers grid */
 .answers {
   display: flex;
   flex-wrap: wrap;
@@ -132,7 +126,7 @@ button:disabled,
   cursor: pointer;
   transition: background 0.2s ease, transform 0.1s ease;
   color: #293264;
-  min-width: 120px; /* touch target size */
+  min-width: 120px;
   text-align: center;
 }
 
@@ -148,13 +142,13 @@ button:disabled,
 }
 
 .answer.correct {
-  background-color: #2e8540; /* WCAG contrast green */
+  background-color: #2e8540;
   color: #fff;
   border: none;
 }
 
 .answer.wrong {
-  background-color: #d7263d; /* darker red for contrast */
+  background-color: #d7263d;
   color: #fff;
   border: none;
 }
@@ -163,12 +157,10 @@ button:disabled,
   opacity: 0.6;
 }
 
-/* Check answers button */
 .checkAnswersBtn {
   margin: 32px auto 20px auto;
 }
 
-/* Warning and results */
 .warning-message {
   color: #d7263d;
   margin-bottom: 1rem;
@@ -199,7 +191,6 @@ button:disabled,
   display: inline-block;
 }
 
-/* Mobile Responsiveness */
 @media (max-width: 600px) {
   .quiz-container {
     padding: 0 0.5rem;
