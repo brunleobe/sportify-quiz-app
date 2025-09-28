@@ -51,9 +51,9 @@ button.primary:hover {
 
 button:focus,
 .answer:focus {
-  outline: 3px solid #ffbf47;
-  outline-offset: 3px;
+  outline: none;
 }
+
 
 button:active {
   transform: scale(0.97);
