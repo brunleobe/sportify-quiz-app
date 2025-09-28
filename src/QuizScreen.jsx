@@ -7,6 +7,7 @@ export default function QuizScreen() {
   const [showResults, setShowResults] = useState(false)
   const [score, setScore] = useState(0)
   const [showWarning, setShowWarning] = useState(false)
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetch("https://opentdb.com/api.php?amount=10&category=21")
@@ -24,6 +25,7 @@ export default function QuizScreen() {
         })
         setQuestions(formatted)
       })
+      .finally(() => setLoading(false))
   }, [])
 
   function selectAnswer(qId, answer) {
@@ -60,52 +62,60 @@ export default function QuizScreen() {
       <img src="/blue-blob-main.png" alt="" className="blob-img blob-blue" />
 
       <div className="quiz-container">
-        {questions.map(q => (
-          <div key={q.id} className="question-block">
-            <h3>{q.question}</h3>
-            <div className="answers">
-              {q.answers.map(a => {
-                const isSelected = selectedAnswers[q.id] === a
-                const isCorrect = q.correct === a
-
-                let className = "answer"
-                if (showResults) {
-                  if (isCorrect) className += " correct"
-                  else if (isSelected) className += " wrong"
-                } else if (isSelected) {
-                  className += " selected"
-                }
-
-                return (
-                  <button
-                    key={a}
-                    className={className}
-                    onClick={() => selectAnswer(q.id, a)}
-                  >
-                    {a}
-                  </button>
-                )
-              })}
-            </div>
-          </div>
-        ))}
-        {showWarning && (
-          <div className="warning-message">
-            Please answer all questions first
-          </div>
-        )}
-        {showResults ? (
-          <div className="results">
-            <p>You scored {score}/{questions.length} correct answers</p>
-            <button onClick={playAgain}>Play again</button>
-          </div>
+        {loading ? (
+          <p className="loading-text">Loading...</p>
         ) : (
-          <button
-            className="checkAnswersBtn"
-            onClick={checkAnswers}
-          >
-            Check answers
-          </button>
+          <>
+            {questions.map(q => (
+              <div key={q.id} className="question-block">
+                <h3>{q.question}</h3>
+                <div className="answers">
+                  {q.answers.map(a => {
+                    const isSelected = selectedAnswers[q.id] === a
+                    const isCorrect = q.correct === a
+
+                    let className = "answer"
+                    if (showResults) {
+                      if (isCorrect) className += " correct"
+                      else if (isSelected) className += " wrong"
+                    } else if (isSelected) {
+                      className += " selected"
+                    }
+
+                    return (
+                      <button
+                        key={a}
+                        className={className}
+                        onClick={() => selectAnswer(q.id, a)}
+                      >
+                        {a}
+                      </button>
+                    )
+                  })}
+                </div>
+              </div>
+            ))}
+
+            {showWarning && (
+              <div className="warning-message">
+                Please answer all questions first
+              </div>
+            )}
+
+            {showResults ? (
+              <div className="results">
+                <p>You scored {score}/{questions.length} correct answers</p>
+                <button onClick={playAgain}>Play again</button>
+              </div>
+            ) : (
+              <button
+                className="checkAnswersBtn"
+                onClick={checkAnswers}
+              >
+                Check answers
+              </button>
+            )}
+          </>
         )}
       </div>
     </div>
